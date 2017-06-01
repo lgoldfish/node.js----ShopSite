@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/index-style.css">
+</head>
+<body>
+<div class="shop-sign"><img src="/images/shop-sign.png"></div>
+<hr class="hr">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="panel panel-default">
+			  		<div class="panel-heading ">
+			    		<h3 class="panel-title">商品后台页面</h3>
+			  		</div>
+			  		<div class="panel-body">
+			    		<% if(username){ %>
+			    			<p>当前登录的用户:<%=username%></p>
+			    			<p><a href="/shops/insert">商品添加</a></p>
+			    			<p><a href="/users/loginout">登出</a></p>
+			    			<p><a href="/">返回前台首页</a></p>
+			    		<%} %>
+			  		</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<table class="table table-bordered table-striped ">
+					<tr>
+						<th>id</th>
+						<th>商品名称</th>
+						<th>价格</th>
+						<th>库存</th>
+						<th>图片</th>
+						<th>操作（修改 删除）</th>
+					</tr>
+					<% books.forEach((value,index)=>{%>
+					<tr>
+						<td><%=value._id%></td>
+						<td><%=value.title%></td>
+						<td><%=value.price%></td>
+						<td><%=value.num%></td>
+						<td><img style="width: 100px" src="/images/<%=value.img%>"></td>
+						<td><a href="/shops/update/<%=value.id%>" class="btn btn-primary margin">修改商品</a>
+						<a href="/shops/remove/<%=value._id%>/<%=value.img%>" class="btn btn-danger margin">删除商品</a>
+						</td>
+					</tr>
+					<%})%>
+				</table>
+				<nav aria-label="Page navigation">
+				  <ul class="pagination">
+				    	<% if(currentPage == 1){%>
+				    		 <li class="disabled">
+				    		 	<a href="#" aria-label="Previous">
+				    		      <span aria-hidden="true">&laquo;</span>
+				      			</a>
+				      		</li>
+				    	<% } else {%>
+				    	    <li>
+				    		 <a href="/shops/?page=<%=currentPage-1%>" aria-label="Previous">
+				    		  <span aria-hidden="true">&laquo;</span>
+				      			</a>
+				      		</li>
+				    	<% } %>
+				    
+				    <% for(var index=1;index<=booksCount;index++){%>
+				    	<% if(currentPage == index) {%>
+				    		<li class="active"><a href="/shops/?page=<%=index%>"><%=index%></a></li>
+				    	<% } else {%>
+				    		<li><a href="/shops/?page=<%=index%>"><%=index%></a></li>
+				    	<% } %>
+				    	
+				    <%}%>
+				    <% if(currentPage == booksCount){%>
+				    	<li class="disabled">
+					      <a href="#" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					      </a>
+				    	</li>
+				    <% } else {%>
+				    	<li>
+					      <a href="/shops/?page=<%=parseInt(currentPage)+1%>" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					      </a>
+					    </li>
+				    <% }%>
+				  </ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

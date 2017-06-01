@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/index-style.css">
+</head>
+<body>
+<div class="shop-sign"><img src="/images/shop-sign.png"></div>
+	<nav class="navbar navbar-default navbar-inverse">
+  <div class="container-fluid container">
+    <div class="navbar-header ">
+      <a class="navbar-brand " href="#">商品详情页</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+   	    <li  class="active"><a href="/">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+	<div class="row">
+ <li class="list-group-item">
+	<div class="row">
+		<div class="col-md-4">
+			<img src="/images/<%=data.img%>" class="img-responsive">
+		</div>
+		<div class="col-md-8">
+			<blockquote>
+			<h3><%=data.title%></h3>
+			<p><strong class="text-primary">RMB:</strong class="text-primary"><%=data.price.toFixed(2)%></p>
+			<p><strong class="text-primary">商品的数量：</strong class="text-primary"><%=data.num%></p>
+			<p><strong class="text-primary">商品描述：</strong class="text-primary"><br>
+			<%=data.decriction%></p>
+			<a class="btn btn-danger" href="#" role="button">添加到购物车</a>
+		</blockquote
+		</div>		
+	</div>
+</li>
+</div>
+</div>
+<hr>
+</body>
+</html>
